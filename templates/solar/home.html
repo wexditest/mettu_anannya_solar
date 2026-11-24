@@ -1,0 +1,57 @@
+{% extends "solar/base.html" %}
+{% block content %}
+<section class="hero" id="home">
+  <div class="hero-text">
+    <p class="tag">☀ HARNESS THE POWER OF SUN</p>
+    <h1>Clean Energy.<br><span>Lower Bills.</span><br>A Brighter Tomorrow.</h1>
+    <p>Powering homes, businesses and industries with reliable, clean and sustainable solar energy solutions.</p>
+    <div class="hero-actions"><a href="#contact" class="btn">Book Free Site Survey</a><a href="tel:+919948224123" class="btn outline">Talk to an Expert</a></div>
+  </div>
+  <div class="subsidy"><b>PM SURYA GHAR</b><strong>MUFT BIJLI YOJANA</strong><span>Government subsidy available<br><em>As per applicable government norms</em></span></div>
+</section>
+
+<section class="benefits">
+  <div>🌿<b>Save on Bills</b><small>Generate your own electricity</small></div>
+  <div>🌍<b>Eco Friendly</b><small>Go green and protect the environment</small></div>
+  <div>🛡️<b>Reliable & Safe</b><small>Quality products and expert installation</small></div>
+  <div>☀️<b>Solar Solutions</b><small>For homes, businesses and industries</small></div>
+</section>
+
+<section class="section" id="services">
+ <div class="section-heading"><p class="tag">OUR SERVICES</p><h2>Complete Solar & Power Solutions</h2><p>From solar system design to installation and after-sales support.</p></div>
+ <div class="services-grid">
+  <article><span>☀</span><h3>Solar On-Grid Systems</h3><p>Grid-connected solar systems designed to reduce electricity costs.</p></article>
+  <article><span>🔋</span><h3>Solar Off-Grid Systems</h3><p>Independent solar power solutions for reliable energy.</p></article>
+  <article><span>⚡</span><h3>Hybrid Solar Systems</h3><p>Flexible solar solutions combining grid and backup power.</p></article>
+  <article><span>🔒</span><h3>Solar Fencing</h3><p>Secure your property with practical solar fencing solutions.</p></article>
+  <article><span>♨️</span><h3>Solar Water Heaters</h3><p>Efficient hot water solutions powered by the sun.</p></article>
+  <article><span>💡</span><h3>Solar Street Lights</h3><p>Energy-efficient lighting for a brighter tomorrow.</p></article>
+  <article><span>🔌</span><h3>Backup Inverters</h3><p>Reliable backup power for homes and businesses.</p></article>
+  <article><span>🔋</span><h3>Battery & Inverter Solutions</h3><p>Exide and Luminous battery and inverter solutions.</p></article>
+  <article><span>🛠️</span><h3>Annual Maintenance (AMC)</h3><p>Support and maintenance for long-term system performance.</p></article>
+ </div>
+</section>
+
+<section class="why" id="why-us">
+ <div><p class="tag">WHY CHOOSE US?</p><h2>Solar Solutions You Can Trust</h2>
+ <ul><li>MNRE compliant solutions</li><li>Premium quality solar products</li><li>Professional and experienced installation team</li><li>Fast and hassle-free installation</li><li>Net metering assistance</li><li>After-sales service and support</li><li>Transparent pricing and customized solutions</li><li>Long-term performance focus</li></ul></div>
+ <div class="survey-card"><h2>BOOK YOUR<br><span>FREE SITE SURVEY</span></h2><p>Get a customized solar solution for your home or business.</p><a href="#contact" class="btn">Request a Callback</a><div class="mini-features">✓ Zero consultation charges<br>✓ Customized solution<br>✓ Quick installation<br>✓ Dedicated support</div></div>
+</section>
+
+<section class="projects section" id="projects">
+ <div class="section-heading"><p class="tag">OUR SOLAR WORK</p><h2>Solutions & Project Inspiration</h2></div>
+ <div class="project-grid">
+   <img src="/static/images/solar-services.jpeg" alt="Solar services">
+   <img src="/static/images/solar-poster-1.jpeg" alt="Mettu Anannya Solar solutions">
+   <img src="/static/images/solar-poster-2.jpeg" alt="Solar energy promotion">
+   <img src="/static/images/solar-poster-3.jpeg" alt="Solar systems information">
+ </div>
+</section>
+
+<section class="contact" id="contact">
+ <div><p class="tag">LET'S GO SOLAR</p><h2>Start Your Clean Energy Journey</h2><p>Contact our technical team for a site survey and the right solar solution for your requirement.</p>
+ <div class="contact-info"><p><b>Komeshwar Reddy Mettu</b><br>Technical Director</p><p>📞 +91 99482 24123<br>📞 +91 99635 43433</p><p>✉ anannyasolarenergy@gmail.com</p><p>📍 2-2-161/71, Plot 71, Madhura Nagar Colony, Gopal Nagar, Macha Bollarum, Old Alwal.</p></div></div>
+ <form method="post" action="{% url 'contact' %}">{% csrf_token %}<h3>Request a Free Consultation</h3>{{ form.name }}{{ form.phone }}{{ form.email }}{{ form.service }}{{ form.message }}<button class="btn" type="submit">Send Enquiry</button></form>
+</section>
+{% if messages %}<div class="messages">{% for message in messages %}<p>{{ message }}</p>{% endfor %}</div>{% endif %}
+{% endblock %}
