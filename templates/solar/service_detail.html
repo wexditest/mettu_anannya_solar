@@ -1,0 +1,41 @@
+{% extends "solar/base.html" %}
+{% load static %}
+{% block title %}{{ service.title }} | Mettu Anannya Solar Energy{% endblock %}
+{% block content %}
+<main class="service-detail">
+ <nav class="service-breadcrumb" aria-label="Breadcrumb"><a href="{% url 'home' %}">Home</a><span aria-hidden="true">/</span><a href="{% url 'home' %}#services">Our Services</a><span aria-hidden="true">/</span><span aria-current="page">{{ service.title }}</span></nav>
+ <section class="service-detail-hero">
+  <div class="service-detail-copy">
+   <p class="service-kicker">{{ service.kicker }}</p>
+   <h1>{{ service.title }}</h1>
+   <p>{{ service.overview }}</p>
+   <a class="btn" href="{% url 'home' %}#contact">Request a Free Consultation</a>
+  </div>
+  <img class="service-detail-image" src="{% static service.main_image %}" alt="{{ service.main_image_alt }}">
+ </section>
+ <section class="service-detail-content" aria-labelledby="service-includes-title">
+  <div>
+   <p class="tag">A SOLUTION FOR YOUR SITE</p>
+   <h2 id="service-includes-title">What this service includes</h2>
+   <p>Every property and requirement is different. Talk with our team to discuss the right approach for your installation.</p>
+  </div>
+  <div class="service-detail-features">
+   {% for title, description in service.features %}
+   <article><span aria-hidden="true">✓</span><div><h3>{{ title }}</h3><p>{{ description }}</p></div></article>
+   {% endfor %}
+  </div>
+ </section>
+ <section class="service-gallery" aria-labelledby="service-gallery-title">
+  <div class="section-heading"><p class="tag">OUR WORK</p><h2 id="service-gallery-title">Service photos</h2></div>
+  <div class="service-gallery-grid">
+   {% for photo in service.gallery %}
+   <figure><img src="{% static photo.image %}" alt="{{ photo.alt }}" loading="lazy" decoding="async"></figure>
+   {% endfor %}
+  </div>
+ </section>
+ <section class="service-detail-cta">
+  <div><p class="service-kicker">LET'S PLAN YOUR NEXT STEP</p><h2>Looking for {{ service.title }}?</h2><p>Tell us about your site and our team will help you explore a suitable solution.</p></div>
+  <a class="btn" href="{% url 'home' %}#contact">Talk to Our Team</a>
+ </section>
+</main>
+{% endblock %}
