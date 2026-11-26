@@ -5,7 +5,7 @@ from django.utils.http import urlencode
 from .forms import EnquiryForm
 from .services import SERVICES, SERVICES_BY_SLUG
 
-WHATSAPP_NUMBER = "919948224123"
+WHATSAPP_NUMBER = "919963543433"
 
 
 def home(request):

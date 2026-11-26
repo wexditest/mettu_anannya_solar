@@ -7,7 +7,7 @@ from django.urls import reverse
 
 from .forms import EnquiryForm
 from .services import SERVICES
-from .views import contact, service_detail
+from .views import contact, home, service_detail
 
 
 class EnquiryFormTests(SimpleTestCase):
@@ -54,6 +54,16 @@ class ServicePageTests(SimpleTestCase):
             service_detail(RequestFactory().get("/services/not-a-service/"), "not-a-service")
 
 
+class BoardProfileTests(SimpleTestCase):
+    def test_leadership_cards_render_director_photos_with_accessible_names(self):
+        response = home(RequestFactory().get("/"))
+
+        self.assertContains(response, 'alt="Komeshwar Reddy Mettu"')
+        self.assertContains(response, 'src="/static/images/profile/komeshwar.jpeg"')
+        self.assertContains(response, 'alt="Mettu Ashwini Reddy"')
+        self.assertContains(response, 'src="/static/images/profile/ashwini.jpeg"')
+
+
 class ContactWhatsAppTests(SimpleTestCase):
     @patch("solar.views.EnquiryForm")
     def test_valid_enquiry_saves_and_redirects_to_whatsapp_with_encoded_details(self, form_class):
@@ -75,7 +85,7 @@ class ContactWhatsAppTests(SimpleTestCase):
         self.assertEqual(response.status_code, 302)
         location = urlsplit(response["Location"])
         self.assertEqual(location.netloc, "wa.me")
-        self.assertEqual(location.path, "/919948224123")
+        self.assertEqual(location.path, "/919963543433")
         message = parse_qs(location.query)["text"][0]
         self.assertIn("Phone: +91 99482 24123", message)
         self.assertIn("Service: Solar Fencing", message)
